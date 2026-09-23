@@ -1,0 +1,1678 @@
+!DOCTYPE html>
+html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>John Paul Baldomar — IT Developer Portfolio</title>
+  <meta name="description" content=" John Paul Baldomar — BSIT student, programmer, web developer, networking and hardware project developer.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+
+    /* =====================================================
+       GLOBAL
+    ===================================================== */
+
+    :root {
+      --bg: #060816;
+      --bg-secondary: #0b1024;
+      --card: rgba(16, 24, 48, 0.72);
+
+      --text: #f4f7ff;
+      --text-soft: #9ba7c2;
+
+      --blue: #4da3ff;
+      --cyan: #35e0ff;
+      --purple: #8b5cf6;
+      --pink: #ec4899;
+
+      --border: rgba(255,255,255,0.10);
+
+      --font-main: "Inter", sans-serif;
+      --font-display: "Space Grotesk", sans-serif;
+      --font-mono: "JetBrains Mono", monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 10% 10%, rgba(77,163,255,0.12), transparent 30%),
+        radial-gradient(circle at 90% 20%, rgba(139,92,246,0.12), transparent 30%),
+        var(--bg);
+
+      color: var(--text);
+      font-family: var(--font-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+
+      background-size: 50px 50px;
+      pointer-events: none;
+      z-index: -2;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    section {
+      padding: 110px 7%;
+      position: relative;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    /* =====================================================
+       GLOWING BACKGROUND
+    ===================================================== */
+
+    .glow {
+      position: fixed;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+
+      background: radial-gradient(
+        circle,
+        rgba(77,163,255,0.12),
+        transparent 70%
+      );
+
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .glow.one {
+      top: 10%;
+      left: -150px;
+    }
+
+    .glow.two {
+      bottom: 10%;
+      right: -150px;
+      background: radial-gradient(
+        circle,
+        rgba(139,92,246,0.13),
+        transparent 70%
+      );
+    }
+
+    /* =====================================================
+       NAVIGATION
+    ===================================================== */
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+
+      background: rgba(6,8,22,0.72);
+      backdrop-filter: blur(18px);
+
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: auto;
+
+      height: 75px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 0 25px;
+    }
+
+    .logo {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    .logo span {
+      color: var(--cyan);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-soft);
+
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--cyan);
+    }
+
+    /* =====================================================
+       HERO
+    ===================================================== */
+
+    .hero {
+      min-height: 100vh;
+
+      display: flex;
+      align-items: center;
+
+      padding-top: 130px;
+    }
+
+    .hero-content {
+      max-width: 850px;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+
+      padding: 8px 15px;
+
+      border: 1px solid rgba(53,224,255,0.2);
+      border-radius: 50px;
+
+      background: rgba(53,224,255,0.06);
+
+      color: var(--cyan);
+
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+
+      margin-bottom: 25px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+
+      border-radius: 50%;
+
+      background: #35e0a1;
+
+      box-shadow: 0 0 12px #35e0a1;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+
+      font-size: clamp(3rem, 8vw, 6.5rem);
+
+      line-height: 0.95;
+
+      letter-spacing: -0.05em;
+
+      margin-bottom: 30px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(
+        90deg,
+        var(--cyan),
+        var(--blue),
+        var(--purple),
+        var(--pink)
+      );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+
+      color: transparent;
+
+      background-size: 300% auto;
+
+      animation: gradientMove 7s ease infinite;
+    }
+
+    @keyframes gradientMove {
+      0%,100% {
+        background-position: 0% center;
+      }
+
+      50% {
+        background-position: 100% center;
+      }
+    }
+
+    .hero p {
+      max-width: 650px;
+
+      font-size: 1.15rem;
+
+      color: var(--text-soft);
+
+      margin-bottom: 35px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 13px 22px;
+
+      border-radius: 10px;
+
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+
+      transition: 0.3s;
+
+      border: 1px solid var(--border);
+    }
+
+    .btn-primary {
+      background: linear-gradient(
+        135deg,
+        var(--blue),
+        var(--purple)
+      );
+
+      border: none;
+
+      box-shadow:
+        0 0 25px rgba(77,163,255,0.18);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+
+      box-shadow:
+        0 10px 35px rgba(77,163,255,0.3);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.03);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+    }
+
+    /* =====================================================
+       SECTION TITLES
+    ===================================================== */
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+
+      color: var(--cyan);
+
+      margin-bottom: 10px;
+
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+
+      font-size: clamp(2rem, 5vw, 3.5rem);
+
+      margin-bottom: 50px;
+
+      letter-spacing: -0.03em;
+    }
+
+    /* =====================================================
+       ABOUT
+    ===================================================== */
+
+    .about-grid {
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 50px;
+
+      align-items: center;
+    }
+
+    .about-text p {
+      color: var(--text-soft);
+
+      margin-bottom: 20px;
+
+      font-size: 1rem;
+    }
+
+    .terminal {
+      background: #080c1a;
+
+      border: 1px solid var(--border);
+
+      border-radius: 15px;
+
+      overflow: hidden;
+
+      box-shadow:
+        0 20px 70px rgba(0,0,0,0.35);
+    }
+
+    .terminal-header {
+      padding: 13px 18px;
+
+      background: rgba(255,255,255,0.04);
+
+      display: flex;
+      gap: 7px;
+    }
+
+    .terminal-dot {
+      width: 10px;
+      height: 10px;
+
+      border-radius: 50%;
+
+      background: rgba(255,255,255,0.2);
+    }
+
+    .terminal-body {
+      padding: 25px;
+
+      font-family: var(--font-mono);
+
+      font-size: 0.8rem;
+
+      color: var(--text-soft);
+    }
+
+    .terminal-body .green {
+      color: #5ee7a3;
+    }
+
+    .terminal-body .blue {
+      color: var(--cyan);
+    }
+
+    .terminal-body .purple {
+      color: #b79cff;
+    }
+
+    /* =====================================================
+       SKILLS
+    ===================================================== */
+
+    .skills-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+
+      gap: 20px;
+    }
+
+    .skill-card {
+      background: var(--card);
+
+      border: 1px solid var(--border);
+
+      border-radius: 16px;
+
+      padding: 25px;
+
+      backdrop-filter: blur(15px);
+
+      transition: 0.35s;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-7px);
+
+      border-color: rgba(53,224,255,0.3);
+
+      box-shadow:
+        0 20px 50px rgba(0,0,0,0.25);
+    }
+
+    .skill-number {
+      font-family: var(--font-mono);
+
+      color: var(--cyan);
+
+      font-size: 0.7rem;
+
+      margin-bottom: 15px;
+    }
+
+    .skill-card h3 {
+      font-family: var(--font-display);
+
+      margin-bottom: 15px;
+    }
+
+    .skill-card ul {
+      list-style: none;
+    }
+
+    .skill-card li {
+      color: var(--text-soft);
+
+      font-size: 0.85rem;
+
+      padding: 6px 0;
+
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    /* =====================================================
+       PROJECTS
+    ===================================================== */
+
+    .projects-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(auto-fit, minmax(320px, 1fr));
+
+      gap: 25px;
+    }
+
+    .project-card {
+      position: relative;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(20,30,60,0.85),
+          rgba(10,15,32,0.9)
+        );
+
+      border: 1px solid var(--border);
+
+      border-radius: 18px;
+
+      overflow: hidden;
+
+      transition: 0.4s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+
+      border-color: rgba(77,163,255,0.35);
+
+      box-shadow:
+        0 25px 70px rgba(0,0,0,0.35);
+    }
+
+    .project-top {
+      height: 190px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(77,163,255,0.18),
+          transparent 65%
+        );
+
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project-icon {
+      font-family: var(--font-mono);
+
+      font-size: 1.1rem;
+
+      text-align: center;
+
+      color: var(--cyan);
+
+      line-height: 1.7;
+    }
+
+    .project-content {
+      padding: 25px;
+    }
+
+    .project-number {
+      color: var(--purple);
+
+      font-family: var(--font-mono);
+
+      font-size: 0.7rem;
+
+      margin-bottom: 8px;
+    }
+
+    .project-card h3 {
+      font-family: var(--font-display);
+
+      font-size: 1.35rem;
+
+      margin-bottom: 12px;
+    }
+
+    .project-card p {
+      color: var(--text-soft);
+
+      font-size: 0.9rem;
+
+      margin-bottom: 18px;
+    }
+
+    .tags {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 7px;
+    }
+
+    .tag {
+      padding: 5px 9px;
+
+      background: rgba(77,163,255,0.08);
+
+      border: 1px solid rgba(77,163,255,0.15);
+
+      color: #9fd5ff;
+
+      border-radius: 6px;
+
+      font-family: var(--font-mono);
+
+      font-size: 0.65rem;
+    }
+
+    /* =====================================================
+       EXPERIENCE
+    ===================================================== */
+
+    .experience-grid {
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 50px;
+    }
+
+    .timeline {
+      border-left: 1px solid rgba(77,163,255,0.25);
+
+      padding-left: 30px;
+    }
+
+    .timeline-item {
+      position: relative;
+
+      margin-bottom: 40px;
+    }
+
+    .timeline-item::before {
+      content: "";
+
+      position: absolute;
+
+      left: -36px;
+
+      top: 6px;
+
+      width: 11px;
+      height: 11px;
+
+      border-radius: 50%;
+
+      background: var(--cyan);
+
+      box-shadow:
+        0 0 15px rgba(53,224,255,0.7);
+    }
+
+    .timeline-date {
+      font-family: var(--font-mono);
+
+      font-size: 0.7rem;
+
+      color: var(--cyan);
+
+      margin-bottom: 7px;
+    }
+
+    .timeline-item h3 {
+      font-family: var(--font-display);
+
+      margin-bottom: 5px;
+    }
+
+    .timeline-place {
+      color: var(--purple);
+
+      font-size: 0.85rem;
+
+      margin-bottom: 8px;
+    }
+
+    .timeline-item p {
+      color: var(--text-soft);
+
+      font-size: 0.85rem;
+    }
+
+    /* =====================================================
+       CONTACT
+    ===================================================== */
+
+    .contact-box {
+      text-align: center;
+
+      padding: 80px 30px;
+
+      border: 1px solid var(--border);
+
+      border-radius: 25px;
+
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(77,163,255,0.10),
+          transparent 60%
+        );
+    }
+
+    .contact-box h2 {
+      font-family: var(--font-display);
+
+      font-size: clamp(2.2rem, 5vw, 4rem);
+
+      margin-bottom: 20px;
+    }
+
+    .contact-box p {
+      color: var(--text-soft);
+
+      max-width: 600px;
+
+      margin: auto auto 30px;
+    }
+
+    .contact-links {
+      display: flex;
+
+      justify-content: center;
+
+      flex-wrap: wrap;
+
+      gap: 15px;
+    }
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+
+    footer {
+      border-top: 1px solid var(--border);
+
+      padding: 30px 7%;
+
+      text-align: center;
+
+      color: var(--text-soft);
+
+      font-family: var(--font-mono);
+
+      font-size: 0.7rem;
+    }
+
+    /* =====================================================
+       RESPONSIVE
+    ===================================================== */
+
+    @media (max-width: 800px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      section {
+        padding: 80px 6%;
+      }
+
+      .about-grid,
+      .experience-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: clamp(3rem, 15vw, 5rem);
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="glow one"></div>
+  <div class="glow two"></div>
+
+
+  <!-- =========================
+       NAVIGATION
+  ========================= -->
+
+  <header>
+
+    <nav class="nav">
+
+      <a href="#home" class="logo">
+        John Pauk<span>.</span>
+      </a>
+
+      <ul class="nav-links">
+
+        <li>
+          <a href="#about">01 ABOUT</a>
+        </li>
+
+        <li>
+          <a href="#skills">02 SKILLS</a>
+        </li>
+
+        <li>
+          <a href="#projects">03 PROJECTS</a>
+        </li>
+
+        <li>
+          <a href="#experience">04 EXPERIENCE</a>
+        </li>
+
+        <li>
+          <a href="#contact">05 CONTACT</a>
+        </li>
+
+      </ul>
+
+    </nav>
+
+  </header>
+
+
+  <!-- =========================
+       HERO
+  ========================= -->
+
+  <section class="hero" id="home">
+
+    <div class="container">
+
+      <div class="hero-content">
+
+        <div class="status">
+
+          <span class="status-dot"></span>
+
+          BSIT 3-B • DEVELOPER MODE: ACTIVE
+
+        </div>
+
+        <h1>
+
+          John Paul<br>
+
+          <span class="gradient-text">
+            Baldomar
+          </span>
+
+        </h1>
+
+        <p>
+          I’m an Information Technology student passionate about
+          programming, web development, computer networking, and
+          hardware-based technology projects.
+        </p>
+
+        <div class="hero-buttons">
+
+          <a
+            href="mailto:John Paul Baldomar@gmail.com"
+            class="btn btn-primary"
+          >
+            CONTACT ME
+          </a>
+
+          <a
+            href="https://github.com/none"
+            target="_blank"
+            rel="noopener"
+            class="btn btn-secondary"
+          >
+            VIEW GITHUB →
+          </a>
+
+          <a
+            href="#projects"
+            class="btn btn-secondary"
+          >
+            VIEW PROJECTS ↓
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       ABOUT
+  ========================= -->
+
+  <section id="about">
+
+    <div class="container">
+
+      <div class="section-label">
+        01 / ABOUT
+      </div>
+
+      <h2 class="section-title">
+        Building systems.<br>
+        Solving problems.
+      </h2>
+
+      <div class="about-grid">
+
+        <div class="about-text">
+
+          <p>
+            I’m John Paul Baldomar, a Bachelor of Science in
+            Information Technology student at Easter Samar State University.
+            I enjoy turning ideas into functional technology projects
+            and learning through hands-on development.
+          </p>
+
+          <p>
+            My academic experience includes programming with C++ and C#,
+            web development using PHP and Laravel, network configuration
+            through Cisco Packet Tracer, and hardware automation using
+            Arduino.
+          </p>
+
+          <p>
+            I’m continuously developing my technical and problem-solving
+            skills while preparing for future opportunities in the
+            Information Technology field.
+          </p>
+
+        </div>
+
+
+        <div class="terminal">
+
+          <div class="terminal-header">
+
+            <span class="terminal-dot"></span>
+            <span class="terminal-dot"></span>
+            <span class="terminal-dot"></span>
+
+          </div>
+
+          <div class="terminal-body">
+
+            <p>
+              <span class="green">John Paul@portfolio</span>:~$
+              <span class="blue">whoami</span>
+            </p>
+
+            <br>
+
+            <p>
+               JOhn Paul Baldomar
+            </p>
+
+            <p>
+              BSIT 3-B
+            </p>
+
+            <p>
+              Easter Samar State University
+            </p>
+
+            <br>
+
+            <p>
+              <span class="green">John Paul@portfolio</span>:~$
+              <span class="blue">focus --current</span>
+            </p>
+
+            <br>
+
+            <p class="purple">
+              Programming
+            </p>
+
+            <p class="purple">
+              Web Development
+            </p>
+
+            <p class="purple">
+              Networking
+            </p>
+
+            <p class="purple">
+              Hardware &amp; Automation
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       SKILLS
+  ========================= -->
+
+  <section id="skills">
+
+    <div class="container">
+
+      <div class="section-label">
+        02 / SKILLS
+      </div>
+
+      <h2 class="section-title">
+        My IT command center.
+      </h2>
+
+      <div class="skills-grid">
+
+
+        <div class="skill-card">
+
+          <div class="skill-number">
+            01
+          </div>
+
+          <h3>
+            Programming
+          </h3>
+
+          <ul>
+            <li>C++</li>
+            <li>C#</li>
+            <li>PHP</li>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+          </ul>
+
+        </div>
+
+
+        <div class="skill-card">
+
+          <div class="skill-number">
+            02
+          </div>
+
+          <h3>
+            Web Development
+          </h3>
+
+          <ul>
+            <li>Laravel</li>
+            <li>Responsive Web Design</li>
+            <li>Front-End Development</li>
+            <li>User Interface Design</li>
+            <li>Website Development</li>
+          </ul>
+
+        </div>
+
+
+        <div class="skill-card">
+
+          <div class="skill-number">
+            03
+          </div>
+
+          <h3>
+            Networking
+          </h3>
+
+          <ul>
+            <li>Cisco Packet Tracer</li>
+            <li>IPv4 Addressing</li>
+            <li>IP Subnetting</li>
+            <li>TCP/IP</li>
+            <li>OSI Model</li>
+            <li>Router Configuration</li>
+          </ul>
+
+        </div>
+
+
+        <div class="skill-card">
+
+          <div class="skill-number">
+            04
+          </div>
+
+          <h3>
+            Hardware &amp; Tools
+          </h3>
+
+          <ul>
+            <li>Arduino</li>
+            <li>Motion Sensors</li>
+            <li>LCD Integration</li>
+            <li>LED Control</li>
+            <li>Motor Control</li>
+            <li>Visual Studio</li>
+            <li>GitHub</li>
+          </ul>
+
+        </div>
+
+
+        <div class="skill-card">
+
+          <div class="skill-number">
+            05
+          </div>
+
+          <h3>
+            IT Skills
+          </h3>
+
+          <ul>
+            <li>Programming Logic</li>
+            <li>Problem Solving</li>
+            <li>System Design</li>
+            <li>Technical Documentation</li>
+            <li>Computer Fundamentals</li>
+            <li>IT Fundamentals</li>
+          </ul>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       PROJECTS
+  ========================= -->
+
+  <section id="projects">
+
+    <div class="container">
+
+      <div class="section-label">
+        03 / PROJECTS
+      </div>
+
+      <h2 class="section-title">
+        Projects from the lab.
+      </h2>
+
+      <div class="projects-grid">
+
+
+        <!-- PROJECT 1 -->
+
+        <article class="project-card">
+
+          <div class="project-top">
+
+            <div class="project-icon">
+              &lt; C++ /&gt;<br>
+              HOTEL BOOKING
+            </div>
+
+          </div>
+
+          <div class="project-content">
+
+            <div class="project-number">
+              PROJECT 01
+            </div>
+
+            <h3>
+              Hotel Booking System
+            </h3>
+
+            <p>
+              A console-based hotel booking system developed in C++.
+              Users can view room rates and availability, book rooms,
+              cancel reservations, and view existing bookings.
+            </p>
+
+            <div class="tags">
+
+              <span class="tag">C++</span>
+              <span class="tag">CONSOLE APP</span>
+              <span class="tag">PROGRAMMING LOGIC</span>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- PROJECT 2 -->
+
+        <article class="project-card">
+
+          <div class="project-top">
+
+            <div class="project-icon">
+              &lt; C# /&gt;<br>
+              RESERVATION SYSTEM
+            </div>
+
+          </div>
+
+          <div class="project-content">
+
+            <div class="project-number">
+              PROJECT 02
+            </div>
+
+            <h3>
+              Hotel Reservation System
+            </h3>
+
+            <p>
+              A hotel reservation application developed in C# using
+              Visual Studio. The project applies programming concepts
+              to create an organized reservation application.
+            </p>
+
+            <div class="tags">
+
+              <span class="tag">C#</span>
+              <span class="tag">VISUAL STUDIO</span>
+              <span class="tag">APPLICATION DEVELOPMENT</span>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- PROJECT 3 -->
+
+        <article class="project-card">
+
+          <div class="project-top">
+
+            <div class="project-icon">
+              &lt; Laravel /&gt;<br>
+              WEB APPLICATION
+            </div>
+
+          </div>
+
+          <div class="project-content">
+
+            <div class="project-number">
+              PROJECT 03
+            </div>
+
+            <h3>
+              Laravel Web Application
+            </h3>
+
+            <p>
+              A web application developed using PHP and Laravel,
+              focusing on structured website development, navigation,
+              responsive design, and a clean user interface.
+            </p>
+
+            <div class="tags">
+
+              <span class="tag">PHP</span>
+              <span class="tag">LARAVEL</span>
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JAVASCRIPT</span>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- PROJECT 4 -->
+
+        <article class="project-card">
+
+          <div class="project-top">
+
+            <div class="project-icon">
+              &lt; CISCO /&gt;<br>
+              NETWORK SIMULATION
+            </div>
+
+          </div>
+
+          <div class="project-content">
+
+            <div class="project-number">
+              PROJECT 04
+            </div>
+
+            <h3>
+              Cisco Packet Tracer Network
+            </h3>
+
+            <p>
+              A network simulation connecting multiple classes with
+              computers and servers through a router using IPv4
+              addressing, subnetting, and network configuration.
+            </p>
+
+            <div class="tags">
+
+              <span class="tag">CISCO</span>
+              <span class="tag">PACKET TRACER</span>
+              <span class="tag">IPv4</span>
+              <span class="tag">SUBNETTING</span>
+              <span class="tag">ROUTING</span>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- PROJECT 5 -->
+
+        <article class="project-card">
+
+          <div class="project-top">
+
+            <div class="project-icon">
+              &lt; Arduino /&gt;<br>
+              HOME AUTOMATION
+            </div>
+
+          </div>
+
+          <div class="project-content">
+
+            <div class="project-number">
+              PROJECT 05
+            </div>
+
+            <h3>
+              Arduino Home Automation
+            </h3>
+
+            <p>
+              An Arduino-based automation project designed to detect
+              motion, control an LED, display system status on an LCD,
+              and operate a motor for window control.
+            </p>
+
+            <div class="tags">
+
+              <span class="tag">ARDUINO</span>
+              <span class="tag">SENSORS</span>
+              <span class="tag">LCD</span>
+              <span class="tag">LED</span>
+              <span class="tag">MOTOR</span>
+
+            </div>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       EXPERIENCE
+  ========================= -->
+
+  <section id="experience">
+
+    <div class="container">
+
+      <div class="section-label">
+        04 / EXPERIENCE
+      </div>
+
+      <h2 class="section-title">
+        Academic &amp; project experience.
+      </h2>
+
+      <div class="experience-grid">
+
+
+        <!-- EXPERIENCE -->
+
+        <div>
+
+          <div class="timeline">
+
+            <div class="timeline-item">
+
+              <div class="timeline-date">
+                PRESENT
+              </div>
+
+              <h3>
+                IT Student &amp; Project Developer
+              </h3>
+
+              <div class="timeline-place">
+                Easter Samar State University
+              </div>
+
+              <p>
+                Developed academic projects involving software development,
+                web development, networking, and hardware automation.
+              </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+              <div class="timeline-date">
+                ACADEMIC PROJECT
+              </div>
+
+              <h3>
+                Software Development
+              </h3>
+
+              <div class="timeline-place">
+                C++ &amp; C#
+              </div>
+
+              <p>
+                Created hotel booking and reservation systems while
+                practicing programming logic, user interaction, and
+                application organization.
+              </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+              <div class="timeline-date">
+                ACADEMIC PROJECT
+              </div>
+
+              <h3>
+                Network Configuration
+              </h3>
+
+              <div class="timeline-place">
+                Cisco Packet Tracer
+              </div>
+
+              <p>
+                Designed network topologies using routers, computers,
+                servers, IP addressing, subnetting, and inter-network
+                communication.
+              </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+              <div class="timeline-date">
+                ACADEMIC PROJECT
+              </div>
+
+              <h3>
+                Hardware Automation
+              </h3>
+
+              <div class="timeline-place">
+                Arduino
+              </div>
+
+              <p>
+                Integrated sensors, LEDs, an LCD, and a motor into an
+                automation project demonstrating hardware interfacing
+                and control logic.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- EDUCATION -->
+
+        <div>
+
+          <div class="timeline">
+
+            <div class="timeline-item">
+
+              <div class="timeline-date">
+                PRESENT
+              </div>
+
+              <h3>
+                Bachelor of Science in Information Technology
+              </h3>
+
+              <div class="timeline-place">
+                Easter Samar State University
+              </div>
+
+              <p>
+                BSIT 3-B student with academic focus on programming,
+                web development, computer networking, systems development,
+                and hardware integration.
+              </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+              <div class="timeline-date">
+                RELEVANT COURSEWORK
+              </div>
+
+              <h3>
+                Information Technology Studies
+              </h3>
+
+              <div class="timeline-place">
+                Easter Samar State University
+              </div>
+
+              <p>
+                Programming, web development, networking, computer systems,
+                information technology fundamentals, system design, and
+                hardware-related projects.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       CONTACT
+  ========================= -->
+
+  <section id="contact">
+
+    <div class="container">
+
+      <div class="contact-box">
+
+        <div class="section-label">
+          05 / CONTACT
+        </div>
+
+        <h2>
+          Let’s connect.
+        </h2>
+
+        <p>
+          I’m open to opportunities that allow me to develop my skills,
+          gain practical IT experience, and work on meaningful technology
+          projects.
+        </p>
+
+        <div class="contact-links">
+
+          <a
+            href="mailto:onlyjaypee563@gmail.com"
+            class="btn btn-primary"
+          >
+            ✉ EMAIL
+          </a>
+
+          <!-- Replace the phone number below with your actual cellphone number -->
+          <a
+            href="tel:+639683670316"
+            class="btn btn-secondary"
+          >
+            ☎ CELLPHONE
+          </a>
+
+          <!-- Replace the Facebook URL below with your Facebook profile URL -->
+          <a
+            href="https://www.facebook.com/Jaypee Baldomar"
+            target="_blank"
+            rel="noopener"
+            class="btn btn-secondary"
+          >
+            f FACEBOOK
+          </a>
+
+          <!-- Replace the Instagram URL below with your Instagram profile URL -->
+          <a
+            href="https://www.instagram.com/jaypeestzyz/"
+            target="_blank"
+            rel="noopener"
+            class="btn btn-secondary"
+          >
+            ◎ INSTAGRAM
+          </a>
+
+          <a
+            href="https://github.com/none"
+            target="_blank"
+            rel="noopener"
+            class="btn btn-secondary"
+          >
+            &lt;/&gt; GITHUB
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer>
+
+    © 2026 John Paul Baldomar
+
+    <br>
+
+    BSIT 3-B • Easter Samar State University
+
+  </footer>
+
+
+</body>
+</html>
